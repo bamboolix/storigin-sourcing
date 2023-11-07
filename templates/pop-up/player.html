@@ -1,0 +1,61 @@
+
+<style>
+
+  .swiper-button-prev,  .swiper-button-next {
+    top : 23%!important;
+  }
+
+  .yt-logo{
+    position:absolute;
+    top:0px;
+    left:10px;
+    border-radius:50%;
+    width:50px!important;
+    height:50px!important;
+  }
+
+  .popup-container .popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 25px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+</style>
+
+<ion-view view-title="Youtube" style="border-radius:20px!important" class="pane" >
+
+  <ng-youtube-embed 
+      video="videoID" 
+      autoplay="true"
+      color="white" 
+      disablekb="true"
+      end="20"
+      onready="playerReady"
+      width="100%"
+      height="460px"
+      videoid="bytelYtPlayer"
+      enablejsapi="true"> 
+  </ng-youtube-embed>
+
+  <br/>
+
+  <div class="row">
+    <div class="col">
+   
+    </div>
+
+    <div class="col">
+      <button ng-click="ClosePopup('player')" class="icon-left ion-close-round button button-assertive button-block">
+        FERMER
+      </button>     <!-- <h4> <span style="color:red;font-weight: bold;">Kg_id :</span> {{ kgIdVal }} </h4>-->
+    </div>
+    <div class="col">
+    </div>
+
+
+
+  </div>
+
+  
+</ion-view>

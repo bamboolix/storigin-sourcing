@@ -1,0 +1,541 @@
+body{
+  overflow:hidden
+}                                                                                                                                                                                    /* Empty. Add your own CSS if you like */
+
+@keyframes floatbutton {
+  0% {
+      transform: translatey(0px);
+  }
+  50% {
+      transform: translatey(-30px);
+  }
+  100% {
+      transform: translatey(0px);
+  }
+}
+
+@keyframes floatimg {
+  0% {
+      transform: translatey(0px);
+  }
+  50% {
+      transform: translatey(30px);
+  }
+  100% {
+      transform: translatey(0px);
+  }
+}
+
+@keyframes floatpopup {
+  0% {
+      transform: translatey(0px);
+  }
+  50% {
+      transform: translatey(30px);
+  }
+  100% {
+      transform: translatey(0px);
+  }
+}
+
+.popupstorigin
+{
+  transform: translatey(0px);
+  animation: floatpopup 3s ease-in-out infinite;
+}
+
+.buttonstorigin
+{
+  transform: translatey(0px);
+  animation: floatbutton 3s ease-in-out infinite;
+}
+
+.imgstorigin
+{
+  transform: translatey(0px);
+  animation: floatimg 3s ease-in-out infinite;
+}
+
+/* STYLE MATHEMATICS */
+
+.modal{
+  top: 0 ;
+  bottom: 0 ;
+  left: 0 ;
+  right: 0 ;
+  width: 100% ;
+}
+
+@font-face
+{
+    font-family: LightFont;
+    src: url(fonts/TheLightFont.ttf);
+}
+
+@font-face
+{
+    font-family: ThinFont;
+    src: url(fonts/NEOTERIC.ttf);
+}
+
+@font-face
+{
+    font-family: SuperMario;
+    src: url(fonts/SuperMario256.ttf);
+}
+
+.MenuFonts {
+  font-family: SuperMario;
+  font-size: 2em;color: #ffcc00;text-shadow: 2px 2px 2px #000;
+}
+
+.CircleScore {
+  width: 100px;
+  height: 100px;
+  padding-top:7.5px;
+  line-height: 30px;
+  border-radius: 10%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-width: 1px;
+  text-align: center;
+  font-family: arial!important;
+  color: white;
+  font-size: 2em;
+  margin: 0 auto 40px;
+  text-shadow: 2px 2px 10px #673300ff;
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-style: solid;
+  border-color:#ffffff!important;
+  text-align: center;
+  font-family: TheLigntFont;
+  color: white;
+  font-size: 10em;
+  text-transform: uppercase;
+  margin: 0 auto 40px;
+  filter:drop-shadow(0 3mm 4mm rgb(0, 0, 0));
+  /*text-shadow: 2px 2px 10px #673300ff;*/
+}
+
+.CircleOperator{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-style: solid;
+  border-color:#ffffff!important;
+  text-align: center;
+  font-family: TheLigntFont;
+  color: white;
+  font-size: 5em;
+  text-transform: uppercase;
+  margin: 100px auto 40px;
+  filter:drop-shadow(0 3mm 4mm rgb(0, 0, 0));
+  /*text-shadow: 2px 2px 10px #673300ff;*/
+}
+
+.hundreds{
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#3498db;
+  background:#e4ca9a!important;
+  text-shadow: 4px 4px 12px #000000;
+  text-align: center;
+  font-family: TheLigntFont;
+  color: white;
+  font-size: 10em;
+  text-transform: uppercase;
+  margin: 0 auto 40px;
+}
+
+.tens {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#16a085;
+  background:#e4ca9a!important;
+  text-shadow: 4px 4px 12px #000000;
+  text-align: center;
+  font-family: TheLigntFont;
+  color: white;
+  font-size: 10em;
+  text-transform: uppercase;
+  margin: 0 auto 40px;
+}
+.units
+ {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%; /* the magic */
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#e74c3c;
+  background:#e4ca9a!important;
+  text-shadow: 4px 4px 12px #000000;
+  text-align: center;
+  font-family: TheLigntFont;
+  color: white;
+  font-size: 10em;
+  text-transform: uppercase;
+  margin: 0 auto 40px;
+}
+
+.blue {
+  background-color: #3498db;
+}
+.green {
+  background-color: #16a085;
+}
+.red {
+  background-color: #e74c3c;
+}
+
+.grey
+{
+   background-color:#333333;
+}
+
+.black
+{
+   background-color:#000000;
+}
+
+#LifeProgress
+{
+  width: 100%;
+  background-color: #00222;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#FFFFFF;
+  margin-right:50px;
+}
+
+#LifeBar {
+  margin:5px;
+  width: 1%;
+  height: 15px;
+  background-color: #fff;
+}
+#TimeProgress
+{
+  width: 100%;
+  background-color: #00222;
+  border-style : solid;
+  border-width : 5px;
+  border-color : #FFFFFF;
+  margin-right : 50px;
+}
+
+#TimeBar {
+  margin:5px;
+  width: 1%;
+  height: 15px;
+  background-color: #00ccff;
+}
+
+#ChronoProgress {
+  width: 100%;
+  background-color: #e4ca9a;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#ffffff;
+  margin-right:50px;
+}
+
+#ChronoBar {
+  margin:5px;
+  width: 1%;
+  height: 25px;
+  background-color: #00ccff;
+}
+
+
+@media screen and (orientation: portrait) {
+    .circleMontessori {
+            vertical-align: middle;
+            margin-bottom: auto;
+            margin-top: 80%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .circleMontessori {
+            vertical-align: middle;
+            margin-bottom: auto;
+            margin-top: 50%;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    div.circle {
+            vertical-align: middle;
+            margin-bottom: auto;
+            margin-top: 60%;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    div.circle {
+            vertical-align: middle;
+            margin-bottom: auto;
+            margin-top: 25%;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .bottom-icon {
+
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .bottom-icon {
+            padding-top:18%!important;
+    }
+}
+
+
+.MenuButton
+{
+ margin:20px!important;
+ max-width: 100%!important;
+ max-height: 100%!important;
+ width: 90px;
+}
+
+.TeamPopup .button{
+          background-color: #ffcc00!important;
+          color: #fff;
+          position: relative;
+          display: inline-block;
+          margin: 0;
+          border-width: 1px;
+          border-style: solid;
+          vertical-align: top;
+          text-align: center;
+          text-overflow: ellipsis;
+          font-size: 20px;
+          line-height: 42px;
+          border-radius:10px!important;
+        }
+
+.TeamPopup .popup-head{
+      border-bottom: 0px!important;
+      }
+
+.TeamPopup  .popup-title {
+          color:ffcc00!important;
+          font-size:2em!important
+        }
+
+.TeamPopup .popup{
+    width:70%!important;
+    height:70%!important;
+    background-color:rgba( 0,0,0,0.50 )!important;
+    border-radius:20px!important;
+  }
+
+  .tippy-tooltip.tomato-theme {
+    background-color: tomato;
+    color: yellow;
+  }
+
+  .tippy-tooltip.tomato-theme[data-animatefill] {
+    background-color: transparent;
+  }
+
+  .tippy-tooltip.tomato-theme .tippy-backdrop {
+    background-color: #000000;
+  }
+
+
+  .IntroPopup
+  {
+              /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#da7eea+0,c152ea+40,9906e8+100 */
+      background: #da7eea; /* Old browsers */
+      background: -moz-radial-gradient(center, ellipse cover,  #da7eea 0%, #c152ea 40%, #9906e8 100%); /* FF3.6-15 */
+      background: -webkit-radial-gradient(center, ellipse cover,  #da7eea 0%,#c152ea 40%,#9906e8 100%); /* Chrome10-25,Safari5.1-6 */
+      background: radial-gradient(ellipse at center,  #da7eea 0%,#c152ea 40%,#9906e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#da7eea', endColorstr='#9906e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
+
+.ChooseCurrentGame
+{
+  background: #87e0fd;
+  /* Old browsers */background: -moz-linear-gradient(top,  #87e0fd 0%, #53cbf1 40%, #05abe0 100%);
+   /* FF3.6-15 */background: -webkit-linear-gradient(top,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+   /* Chrome10-25,Safari5.1-6 */background: linear-gradient(to bottom,  #87e0fd 0%,#53cbf1 40%,#05abe0 100%);
+   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 );
+   color:#ffffff;font-size:2em;
+   border-radius: 25px;
+   box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+}
+
+.StoriginGameButton
+{
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#da7eea+0,c152ea+11,c152ea+11,9906e8+100 */
+  background: #da7eea; /* Old browsers */
+  background: -moz-linear-gradient(top,  #da7eea 0%, #c152ea 11%, #c152ea 11%, #9906e8 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #da7eea 0%,#c152ea 11%,#c152ea 11%,#9906e8 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #da7eea 0%,#c152ea 11%,#c152ea 11%,#9906e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#da7eea', endColorstr='#9906e8',GradientType=0 ); /* IE6-9 */
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-radius: 25px;
+  color:#ffffff;font-size:2em;
+}
+
+.UnselectedOption {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+    border-radius: 25px;
+    color:#1e5799;font-size:2em;    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1e5799+0,2989d8+50,207cca+51,7db9e8+100;Blue+Gloss+Default */
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+.SelectedOption {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+    border-radius: 25px;
+    color:#000000;font-size:2em;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#00ad00+0,008900+51,0f590f+100 */
+  background: #fcdc04; /* Old browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ad00', endColorstr='#0f590f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.QuitGameButton
+{
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#feccb1+0,f17432+50,ea5507+51,fb955e+100;Red+Gloss+%232 */
+  background: #feccb1; /* Old browsers */
+  background: -moz-linear-gradient(top,  #feccb1 0%, #f17432 50%, #ea5507 51%, #fb955e 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.25);
+  border-radius: 25px;
+  color:#ffffff;font-size:2em;
+}
+
+
+
+.RetentionPopup
+{
+      /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7e98e5+0,4a85d3+40,0642ce+100 */
+  background: rgb(126,152,229); /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(126,152,229,1) 0%, rgba(74,133,211,1) 40%, rgba(6,66,206,1) 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(126,152,229,1) 0%,rgba(74,133,211,1) 40%,rgba(6,66,206,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center,  rgba(126,152,229,1) 0%,rgba(74,133,211,1) 40%,rgba(6,66,206,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7e98e5', endColorstr='#0642ce',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.NotificationTimeThirtyMins{
+  background: #fefcea;
+  background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%);
+  background: -webkit-linear-gradient(top, #fefcea 0%,#f1da36 100%);
+  background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 );
+}
+
+.NotificationTimeOneHour{
+  background: #f78571; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f78571 1%, #f6290c 85%, #f02f17 97%, #e73827 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f78571 1%,#f6290c 85%,#f02f17 97%,#e73827 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f78571 1%,#f6290c 85%,#f02f17 97%,#e73827 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f78571', endColorstr='#e73827',GradientType=0 ); /* IE6-9 */
+}
+
+@font-face {
+    font-family: FreightBigBlack;
+    src: url(fonts/FreightBigBlack.otf);
+}
+
+
+.storigin-blur {
+    /* Add the blur effect */
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+
+  button {
+  --background-focused:#ff600d!important;
+  --background-focused-opacity:0.5;
+}
+
+  .button-active{
+    background-color:red!important;
+  }
+
+  .button-focused{
+    background-color:yellow!important;
+  }
+
+  .popup-container .popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 25px;
+    width: 100% !important;
+    height: 130% !important;
+}
+
+.popup-head {
+    border-bottom: 0px solid #e4ca9a;
+}
+
+.popup-body{
+    display: flex;
+    flex-direction: column;
+}
+
+#badge_img {
+    width: 450px;
+    margin: auto;
+}
+.PersonalRow{
+    display:flex;
+    flex-direction: row;
+}
+
+.swiper-container{
+width: 100%!important;
+}
+.swiper-wrapper {
+width: 50%!important
+}
+.swiper-slide {
+text-align: center!important;
+width: auto!important;
+}
+.slide-image {
+height: 400px!important;
+width: auto!important;
+}
+.my-gallery figure {
+margin: 0px!important;
+}

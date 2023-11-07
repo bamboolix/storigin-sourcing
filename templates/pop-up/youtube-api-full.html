@@ -1,0 +1,258 @@
+
+<style>
+
+  .swiper-button-prev,  .swiper-button-next {
+    top : 23%!important;
+  }
+
+  .yt-logo{
+    position:absolute;
+    top:0px;
+    left:10px;
+    border-radius:50%;
+    width:50px!important;
+    height:50px!important;
+  }
+
+  .popup-container .popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 25px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+</style>
+<ion-view view-title="Youtube" style="border-radius:20px!important" class="pane">
+ 
+  <ion-tabs class="tabs-assertive tabs-icon-top">
+  <!--  <ion-tab title="Selection de chaines" icon-on="ion-social-youtube-outline" icon-off="ion-social-youtube">
+            <div class="item item-divider assertive" style="text-align:center!important">
+              <h1 style="color:#e42112">Youtube Channels List</h1>
+            </div>
+              <div class="row" style="padding:0px!important">
+                <div class = "col">  
+                  <button class=" button button-full icon-left ion-chevron-left button-assertive"  ng-click="ClosePopup('youtube-api')">
+                    retour
+                  </button>
+                </div>
+
+                <div class="col">
+                  <label class="item item-input item-select">
+                    <div class="input-label" tooltips tooltip-template="Choisissez une chaine dans la liste déroulante">
+                      Channel
+                    </div>      
+                    <select name="mySelect" id="mySelect"
+                        ng-options="option.name for option in data.availableOptions track by option.id"
+                        ng-model="data.selectedOption"
+                        ng-change="GetData( '{{ data.selectedOption.id }}' )"></select>
+                  </label>            
+                </div> 
+                <div class="col">
+                  <div class="bar bar-header item-input-inset">        
+                    <label class="item-input-wrapper">
+                      <i class="icon ion-ios-search placeholder-icon"></i>
+                      <input type="text" name="userName" placeholder="@Username" ng-model="user.name" ng-model-options="{ getterSetter: true }"/>
+                    </label>
+                    <button class="button button button-assertive" ng-click="GetChannelId()">
+                      chercher
+                    </button>
+                  </div>
+                </div>     
+                <div class = "col" style="text-align:center"> 
+                  <span style = "font-size : 12px"><b>Channel User :</b> {{ MainChannelCustomUrl }}</span>
+                  <img src="{{ MainChannelLogo }}" style="width:50px!important;border-radius: 50%;">
+                </div>
+              </div>
+<div class="row">
+  <div class = "col">  
+     B20baOfficiel, disney, sony, apple, google, bouyguestelecom, orange, diams 
+    <b>Description :</b> <span style = "font-size : 12px; color:black;">{{ MainChannelDescription }}</span> <br/>
+    <b>Récupérer le contenu de la chaine de : </b>  <span style = "font-size : 15px; color:red;" ng-bind="user.name()"></span>
+  </div>  
+</div> 
+
+
+  <ks-swiper-container initial-slide="1" loop="false" show-nav-buttons="true" slides-per-view="4" space-between="5" pagination-clickable="true" pagination-is-active="true">
+
+                <ks-swiper-slide class="swiper-slide" ng-repeat="channel in AssetData">
+                  <div class="col">
+                    <div class="card" style="width:320px!important">
+                      
+                            <div class="item item-text-wrap">
+
+                              <div class="item item-avatar">
+                                <img style="width:240px!important" src="{{ MainChannelLogo }}">
+                                  <h2>{{ channel.snippet.title.slice(0, 24) + "..." }}</h2>
+                                  <p>publiée le : {{ channel.snippet.publishedAt.slice(0, 10) }}</p>
+                              </div>
+
+                              <div class="item item-body">
+                                <img class="full-image" style="border-radius: 20px ; width:150px!important" ng-src="{{ channel.snippet.thumbnails.standard.url == undefined && 'https://consulting.storigin.fr/img/ionic.png' ||  channel.snippet.thumbnails.standard.url; }}">                 
+                                <p>
+                                  <span style="font-size: 10px;"><b>Channel id : </b>{{ channel.snippet.channelId }}</span><br/>
+                                  <span style="font-size: 10px;"><b>Event id :</b> {{ channel.id }}</span><br/>
+                                  <span style="font-size: 10px;"><b>Etag :</b> {{ channel.etag }}</span><br/>
+                                  <span style="font-size: 10px;"><b>Type :</b> {{ channel.kind }} </span>  
+                                </p>
+                              </div>
+                            </div>
+                    </div>
+                  </div>
+                </ks-swiper-slide>
+             </ks-swiper-container>
+    </ion-tab>
+        
+      
+
+  -->
+
+
+
+  <ion-tab title="Knowledge ID Fixe" icon-on="ion-social-youtube-outline" icon-off="ion-social-youtube">
+    <div class="item item-divider" style="text-align:center!important">
+      <h1 style="color:#e42112">Knowledge ID Fixe</h1>
+    </div>
+
+<!--        <div class="bar bar-header item-input-inset">        
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Graph Search">
+      </label>
+      <button class="button button button-assertive">
+        chercher
+      </button>
+    </div> -->
+
+
+    <ks-swiper-container initial-slide="1" loop="false" show-nav-buttons="true" slides-per-view="4" space-between="5" pagination-clickable="true" pagination-is-active="true">
+      
+      <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
+        <div class="card">
+          <div class="item item-text-wrap">
+            <img style="border-radius: 20px; width:240px!important"  ng-src="https://consulting.storigin.fr/img/youtube-logo.png">
+          </div>
+        </div>
+      </ks-swiper-slide>
+
+  </ks-swiper-container>
+
+
+
+
+
+  </ion-tab>
+
+  
+  <ion-tab title="Knowledge ID variable" icon-on="ion-social-youtube-outline" icon-off="ion-social-youtube">
+    <div class="item item-divider" style="text-align:center!important">
+      <h1 style="color:#e42112">Knowledge ID variable</h1>
+    </div>
+
+      <div class="bar bar-header item-input-inset">        
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="Graph Search">
+      </label>
+      <button class="button button button-assertive">
+        chercher
+      </button>
+    </div> 
+
+
+    <ks-swiper-container initial-slide="1" loop="false" show-nav-buttons="true" slides-per-view="4" space-between="5" pagination-clickable="true" pagination-is-active="true">
+      
+      <ks-swiper-slide class="swiper-slide" ng-repeat="s in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
+        <div class="card">
+          <div class="item item-text-wrap">
+            <img style="border-radius: 20px; width:240px!important"  ng-src="https://consulting.storigin.fr/img/youtube-logo.png">
+          </div>
+        </div>
+      </ks-swiper-slide>
+
+  </ks-swiper-container>
+
+
+  </ion-tab>
+
+<ion-tab title="Recommandations Live" icon-on="ion-social-youtube-outline" icon-off="ion-social-youtube">
+<div id="LiveRecRow" class="list">
+      <div class="item item-divider" style="text-align:center!important">
+        <h1 style="color:#e42112">Youtube LiveRec</h1>
+      </div>
+    
+      <div class="row">
+          <div class="col">
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Recommandations
+                </div>
+                <select name="myRecommandationSelect" id="myRecommandationSelect"
+                    ng-options="option.name for option in topicsData.availableOptions track by option.id"
+                    ng-model="topicsData.selectedOption"
+                    ng-change="GetTopic()">
+                </select>
+              </label>      
+          </div>
+          <div class="col">
+            <div class="item range">
+              <span class="assertive">1</span><i class="icon ion-minus assertive"></i>
+                <input type="range" class="assertive" name="items" min="{{ itemsRange.min }}" max="{{ itemsRange.max }}" ng-model="itemsRange.val">
+              <span class="assertive">{{ itemsRange.max }}</span><i class="icon ion-navicon-round assertive"></i>
+            </div>
+            recommandations retournés dans la limite autorisée : <span class="assertive"> {{ itemsRange.val }}</span>
+          </div>
+    </div>
+
+    <div class="row">
+      <div class="col" ng-repeat="topic in topics" ng-if="topic == 'MOODS_AND_GENRES_MUSIC' || topic == 'TOP_NEWS' || topic == 'TRENDING_MUSIC' || topic == 'SPORTS_NEWS'">  
+        <ion-checkbox  class="checkbox-assertive" style="font-size:10px!important;" ng-model="topicsValues[ topic ]" ng-change="GetMultipleTopic()">
+          {{  topicsLabel [   topic ] }}         
+        </ion-checkbox>
+      </div>
+    </div>
+      
+    <div class="row">
+      <div class="col" ng-repeat="topic in topics"  ng-if="topic == 'TRENDING' || topic == 'TOP_CHARTS_MUSIC' || topic == 'NEW_RELEASES_MUSIC' || topic == 'TRENDING_GAMING'" >  
+
+        <ion-checkbox class="checkbox-assertive" style="font-size:10px!important;" ng-model="topicsValues[ topic ]" ng-change="GetMultipleTopic()">
+          {{  topicsLabel [   topic ] }}         
+        </ion-checkbox>
+
+      </div>
+    </div>
+<!--    <div ng-repeat="shelf in shelfTitles">-->
+      <p>
+        <br/>
+        <b style="color:red;padding-left:25px;">
+          Recommandations : 
+        </b> {{ shelfTitles }} 
+      </p>
+    </div>   
+
+      <br/>
+      <ks-swiper-container initial-slide="1" loop="false" show-nav-buttons="true" slides-per-view="4" space-between="5" pagination-clickable="true" pagination-is-active="true" swiper="ytLiverecSwiper" on-ready="alert()" id="swiper">
+      <!--<ks-swiper-container initial-slide="1" loop="true" show-nav-buttons="true" slides-per-view="4" space-between="10" observer="true" observerParents="true" pagination-clickable="true" pagination-is-active="true"></ks-swiper-container>> --> 
+        <ks-swiper-slide class="swiper-slide" ng-repeat="topic in topicArray">
+            <div>
+              <!--<a ng-href="{{ topic.uri }}">-->
+                <img style="border-radius: 20px; width:420px!important"  ng-src="{{ topic.src }}" ng-click="Play('{{ topic.uri }}')">
+                <img class="yt-logo" src="https://consulting.storigin.fr/img/youtube-logo.png">
+              <!--</a>-->
+              <br/>
+              <span style="font-size:17px;"> {{ topic.title.slice(0, 35) }} ...</span>
+              <br/>
+              <span style="font-size:17px;color:red;font-weight:bold"> {{ topic.creator }} </span> <span style="font-size:17px;"> {{ topic.numberviews }} </span>
+
+            </div> 
+        </ks-swiper-slide>
+    </ks-swiper-container>
+
+  </div>
+</ion-tab>
+
+
+  </ion-tabs>
+
+  <toast></toast>
+
+</ion-view>

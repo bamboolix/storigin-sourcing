@@ -1,0 +1,188 @@
+
+<style>
+
+  .swiper-button-prev,  .swiper-button-next {
+    top : 23%!important;
+  }
+
+  .popup-container .popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 25px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.item-select {
+    position: relative;
+    font-size: 12px;
+}
+
+.item-checkbox {
+    padding-left: 60px;
+    font-size: 12px;
+}
+
+input[type="file"] {
+    line-height: 34px;
+    font-size: 12px;
+    border-color: rgba(0, 0, 0, 0.6);
+    background-color: #32383e;
+}
+</style>
+<ion-view view-title="Consultant" style="border-radius:20px!important" class="pane">
+  <ion-tabs class="tabs-icon-top">
+
+
+  <ion-tab title="Ajout consultants" icon-on="ion-person-add" icon-off="ion-person-add">
+    <div class="item item-divider" style="text-align:center!important">
+      <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important;"></i>
+      <h2>Ajouter un consultantssss</h2>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.prenom" placeholder="Prenom">
+          </label>             
+        </span> 
+      </div>
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.nom" placeholder="Nom">
+          </label>             
+        </span> 
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.telephone" placeholder="Telephone">
+          </label>             
+        </span> 
+      </div>
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.adress" placeholder="Adresse">
+          </label>             
+        </span> 
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.salaire" placeholder="Salaire en k€">
+          </label>             
+        </span> 
+      </div>
+
+      <div class="col">
+        <span>
+          <label class="item-input-wrapper" style="background:#000000;">
+            <input type="text" style="color:#ffffff; background:#000000;" ng-model="consultant.email" placeholder="Email">
+          </label>             
+        </span> 
+      </div>
+    </div>
+
+      <div class="row">
+
+      <div class="col">
+                  <label class="item item-input item-select">
+                    <span style="color:#ffffff">
+                      Profil de métier du consultant
+                    </span>
+                    <select name="ProfilSelect" id="ProfilSelect" style="font-size:14px!important"
+                        ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
+                        ng-model="topicsModesData.selectedOption"
+                        ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+                    </select>
+                  </label>      
+      </div>
+
+      <div class="col">
+                <label class="item item-input item-select">
+                  <span style="color:#ffffff">
+                    Expérience Professionnelle
+                  </span>
+                  <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
+                      ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
+                      ng-model="topicsModesData.selectedOption"
+                      ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+                  </select>
+                </label>      
+    </div>
+
+
+    <div class="col">
+              <label class="item item-input item-select">
+                <span style="color:#ffffff">
+                  Disponibilité du consultant
+                </span>
+                <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
+                    ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
+                    ng-model="topicsModesData.selectedOption"
+                    ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+                </select>
+              </label>      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <ion-checkbox  class="checkbox-dark" style="font-size:13x!important;" ng-model="topicsValues[ topic ]" ng-change="()">
+          Compétences dynamiques par métiers
+      </ion-checkbox>
+      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
+          Compétences dynamiques par métiers
+      </ion-checkbox>
+    </div>
+    <div class="col">
+      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
+          Compétences dynamiques par métiers
+      </ion-checkbox>
+      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
+          Compétences dynamiques par métiers
+      </ion-checkbox>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Région
+          </span>
+          <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
+              ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
+              ng-model="topicsModesData.selectedOption"
+              ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+          </select>
+        </label>      
+      </div>    
+  </div>
+  
+<div class="row">
+    <div class="col">
+      <label class="item-input-wrapper" style="background:#272B30;">
+                <input type="file" id="cv_storigin" name="cv_storigin"><br><br>
+      </label>             
+    </div>
+  </div>
+
+
+  </ion-tab>
+</ion-tabs>
+
+  <toast></toast>
+
+</ion-view>

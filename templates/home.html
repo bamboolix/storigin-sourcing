@@ -1,0 +1,168 @@
+
+
+<ion-view view-title="">
+  <ion-content>
+    <ion-list style="margin-top:50px;">
+      <ion-item>  
+
+        <div class = "row">
+          <div class = "col" style="text-align:center!important;">   
+            <button class="button button button-dark icon icon-left ion-person-add" style="color: rgba(255, 205, 86, 1)!important;" ng-click="OpenPopup('consultant')">
+              ajouter un consultant
+            </button>
+          </div>
+
+          <div class = "col" style="text-align:center!important;">   
+            <button class="button button button-dark icon icon-left  ion-person-stalker" style="color: rgba(255, 205, 86, 1)!important;" ng-click="OpenPopup('nos-consultants')">
+              tous nos consultants
+            </button>
+          </div>
+
+          <div class = "col" style="text-align:center!important;">    
+            <button class="button button button-energized icon icon-left ion-network" style="background-color: rgba(255, 205, 86, 1)!important; color:#000000" ng-click="OpenPopup('opportunite')">
+              opportunités
+            </button>
+          </div>
+        </div>
+
+
+        <div class = "row">
+          <div class = "col">   
+            <div class="list card">
+              <div class="item item-avatar">
+                <img src="https://consulting.storigin.fr/img/logo.jpeg">
+                <h2>nombre de consultants par profils</h2>
+                <p>Octobre 19, 2023</p>
+              </div>
+              <div class="item item-body">
+                <canvas id="consultants"></canvas>
+                <p>
+                 Panorama des consultants Storigin
+                </p>
+                <p>
+                  <a href="#" style="color: rgba(255, 205, 86, 1)!important" class="subdued">1 Like</a>
+                  <a href="#" style="color: rgba(255, 205, 86, 1)!important" class="subdued">5 Comments</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col">   
+            <div class="list card">
+              <div class="item item-avatar">
+                <img src="https://consulting.storigin.fr/img/logo.jpeg">
+                <h2>consultants actifs</h2>
+                <p>Octobre 19, 2023</p>
+              </div>
+              
+              <div class="item item-body">
+                <div class="list">
+                  <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person-stalker"></i>
+                      Geneviève
+                    <span class="badge badge-energized" style="background-color:rgba(255, 205, 86, 1);color:#000">10</span>
+                  </a>
+                  <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person-stalker"></i>
+                      Nadège
+                    <span class="badge badge-dark">4</span>
+                  </a>
+                  <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person-stalker"></i>
+                      Iria
+                    <span class="badge badge-dark">2</span>
+                  </a>
+                  <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person-stalker"></i>
+                       Abelaïd
+                    <span class="badge badge-dark">1</span>
+                  </a>
+                  <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person-stalker"></i>
+                       Mathieu
+                    <span class="badge badge-dark">1</span>
+                  </a>
+              </div>                
+                <p>
+                 Panorama des consultants Storigin
+                </p>
+                <p>
+                  <a href="#" style="color: rgba(255, 205, 86, 1)!important" class="subdued">1 Like</a>
+                  <a href="#" style="color: rgba(255, 205, 86, 1)!important" class="subdued">5 Comments</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          
+          <!--<div class = "col">      
+            <div class="list card">
+              <div class="item item-avatar">
+                <img src="https://consulting.storigin.fr/img/logo.jpeg">
+                <h2>Disponibilités</h2>
+                <p>Octobre 19, 2023</p>
+              </div>
+            
+              <div class="item item-body">
+                <canvas id="disponibility"></canvas>
+                <p>
+                  Panorama des disponibilités de nos consultants Storigin
+                </p>
+                <p>
+                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+                </p>
+              </div>
+            </div>
+          </div>-->
+        </div>
+
+
+        <!--<div class = "row">
+          <div class = "col">      
+            <div class="list card">
+              <div class="item item-avatar">
+                <img src="https://consulting.storigin.fr/img/logo.jpeg">
+                <h2>Candidatures traitées</h2>
+                <p>Octobre 19, 2023</p>
+              </div>
+            
+              <div class="item item-body">
+                <canvas id="selectedConsultants"></canvas>
+                <p>
+                  Consultants Storigin Retenus
+                </p>
+                <p>
+                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class = "col">   
+            <div class="list card">
+              <div class="item item-avatar">
+                <img src="https://consulting.storigin.fr/img/logo.jpeg">
+                <h2>Candidatures récoltées</h2>
+                <p>Octobre 19, 2023</p>
+              </div>
+            
+              <div class="item item-body">
+                <canvas id="candidatures"></canvas>
+                <p>
+                 Panorama des consultants Storigin
+                </p>
+                <p>
+                  <a href="#" class="subdued">1 Like</a>
+                  <a href="#" class="subdued">5 Comments</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </div>-->
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

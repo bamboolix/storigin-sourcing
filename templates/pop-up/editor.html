@@ -1,0 +1,53 @@
+<script src="lib/prism.js"></script>
+
+<style>
+
+.popup-container .popup {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 25px;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#editor { width: 100%; height: 400px }
+
+</style>
+
+<ion-view view-title="Youtube" style="border-radius:20px!important" class="pane" >
+ 
+<ion-tabs class="tabs-assertive tabs-icon-top">
+
+  <ion-tab title="Appels API" icon-on="ion-social-youtube-outline" icon-off="ion-social-youtube">
+    
+    <div class="item item-divider" style="text-align:center!important">
+      <h1 style="color:#e42112">Editeur</h1>
+    </div>
+
+
+    <textarea>
+      Welcome to TinyMCE!
+    </textarea>
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+          { value: 'First.Name', title: 'First Name' },
+          { value: 'Email', title: 'Email' },
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant"))
+      });
+    </script>
+    
+        <br/>
+    <button ng-click="ClosePopup('editor')" class="icon-left ion-close-round button button-assertive button-block">
+      FERMER
+    </button>
+</ion-tab>
+</ion-tabs>
+
+</ion-view>
+

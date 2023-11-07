@@ -1,0 +1,44 @@
+<style>
+
+.scroll-content {
+    background-color: #32383e;
+}
+</style>
+
+
+<ion-side-menus enable-menu-with-back-views="false" style="background-color:#32383e">
+  <ion-side-menu-content style="background-color:#32383e">
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="API">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">Menu</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/app/home" tooltips tooltip-template="Découvrez les APIs Youtube">
+          Consultants
+        </ion-item>
+        <ion-item menu-close href="#/app/home" tooltips tooltip-template="Découvrez les APIs Youtube">
+          Opportunités
+        </ion-item>
+        <ion-item menu-close href="#/app/home" tooltips tooltip-template="Découvrez les APIs Youtube">
+          Mon Compte
+        </ion-item>
+        <ion-item menu-close href="#/app/home" tooltips tooltip-template="Découvrez les APIs Youtube">
+        Contacts
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

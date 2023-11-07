@@ -1,0 +1,115 @@
+
+<style>
+
+  .swiper-button-prev,  .swiper-button-next {
+    top : 23%!important;
+  }
+
+  .popup-container .popup {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-radius: 25px;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.item-select {
+    position: relative;
+    font-size: 12px;
+}
+
+.item-checkbox {
+    padding-left: 60px;
+    font-size: 12px;
+}
+
+input[type="file"] {
+    line-height: 34px;
+    font-size: 12px;
+    border-color: rgba(0, 0, 0, 0.6);
+    background-color: #32383e;
+}
+
+.highlight{
+  color : rgba(255, 205, 86, 1)!important;
+}
+
+.downlight{
+  color : #666;
+}
+
+</style>
+<ion-view view-title="Consultant" style="border-radius:20px!important" class="pane">
+  <ion-tabs class="tabs-icon-top">
+
+<!--    <ion-tab title="Opportunités" icon-on="ion-code-working" icon-off="ion-code-working"> -->
+  <ion-tab title="Opportunités" icon-on="ion-navicon-round" icon-off="ion-navicon-round">
+      <div class="item item-divider" style="text-align:center!important">
+        <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('opportunite')" style="font-size:35px!important;"></i>
+      </div>
+
+      <div class="item item-divider" style="text-align:center!important">
+        <div class = "row">
+          <div class = "col downlight">
+            SOURCEURS
+          </div>
+          <div class = "col">MISSIONS</div>
+          <div class = "col highlight">
+            <div class="ion-text-center">
+            TJM
+          </div>
+        </div>
+        <div class = "col ">
+            &nbsp;
+           </div>
+          <div class = "col">SENIORITE</div>
+          <div class = "col">
+            ACTIONS
+          </div>              
+       </div>
+            </div>
+      
+      <ion-scroll style="height:600px">
+        <ion-list>
+          <ion-item ng-repeat="opportunity in opportunities" type="item-text-wrap">
+            <div class = "row">
+              <div class = "col downlight">
+                {{ opportunity.sourceur }}
+              </div>
+              <div class = "col">{{ opportunity.intitule.slice(0, 20) + "..." }}</div>
+              <div class = "col highlight">
+                <div class="ion-text-center">
+                  {{ opportunity.tjm }}
+                </div>
+              </div>
+              <div class = "col ">
+                <span class="badge badge-energized" style="background-color:rgba(255, 205, 86, 1);color:#000">froid</span>
+              </div>
+              <div class = "col">{{ opportunity.seniorite }}</div>
+              <div class = "col">
+                <div class="button-bar">
+                  <a class="button">
+                    <i class="ion-eye"></i>
+                  </a>
+                  <a class="button">
+                    <i class="ion-trash-a"></i>
+                  </a>
+                  <a class="button">
+                    <i class="ion-edit"></i>
+                  </a>
+                </div>
+              </div>              
+           </div>
+             
+            </ion-item>      
+        </ion-list>
+      </ion-scroll>
+</ion-tab>
+
+<ion-tab title="Opportunités" icon-on="ion-plus" icon-off="ion-plus">
+</ion-tab>
+
+</ion-tabs>
+
+  <toast></toast>
+
+</ion-view>
