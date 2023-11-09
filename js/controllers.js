@@ -8,21 +8,46 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
       $scope.opportunities = data;
    });
  
-   
+
+   $scope.selectedRegion = null;
+   $scope.regions = [];
+   $scope.selectedExperience = null;
+   $scope.experiences = [];
+   $scope.selectedAvailability = null;
+   $scope.availabilities = [];
+
    $http({ 
-     method : 'POST',
-     data: {
-       'kg_id' : '/m/011ncr8c',
-       'shelf_item_count' : 10
-    },
-     url : "http://api.storigin.fr/api/regions", 
+     method : 'GET',
+     url : "https://api.storigin.fr/api/regions",
    }).then(function(response){
        try {
-           
+           $scope.regions = response.data.data;
          } catch (e) {
          console.warn(e);
        }
    });
+
+     $http({
+         method : 'GET',
+         url : "https://api.storigin.fr/api/experiences",
+     }).then(function(response){
+         try {
+             $scope.experiences = response.data.data;
+         } catch (e) {
+             console.warn(e);
+         }
+     });
+
+     $http({
+         method : 'GET',
+         url : "https://api.storigin.fr/api/availabilities",
+     }).then(function(response){
+         try {
+             $scope.availabilities = response.data.data;
+         } catch (e) {
+             console.warn(e);
+         }
+     });
    
    var vm = $scope;
  
@@ -526,5 +551,4 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
            }
        };
    });
- 
  

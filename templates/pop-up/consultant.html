@@ -36,7 +36,7 @@ input[type="file"] {
   <ion-tab title="Ajout consultants" icon-on="ion-person-add" icon-off="ion-person-add">
     <div class="item item-divider" style="text-align:center!important">
       <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important;"></i>
-      <h2>Ajouter un consultantssss</h2>
+      <h2>Ajouter un consultantsss</h2>
     </div>
 
     <div class="row">
@@ -115,9 +115,8 @@ input[type="file"] {
                     Expérience Professionnelle
                   </span>
                   <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
-                      ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
-                      ng-model="topicsModesData.selectedOption"
-                      ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+                          ng-options="av.title for av in availabilities track by av.id"
+                          ng-model="topicsModesData.selectedAvailability" >
                   </select>
                 </label>      
     </div>
@@ -129,9 +128,8 @@ input[type="file"] {
                   Disponibilité du consultant
                 </span>
                 <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
-                    ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
-                    ng-model="topicsModesData.selectedOption"
-                    ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+                    ng-options="ex.title for ex in experiences track by ex.id"
+                    ng-model="topicsModesData.selectedExperience" >
                 </select>
               </label>      
     </div>
@@ -163,9 +161,8 @@ input[type="file"] {
             Région
           </span>
           <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
-              ng-options="option.mode for option in topicsModesData.availableOptions track by option.id"
-              ng-model="topicsModesData.selectedOption"
-              ng-change="ShowModes('{{ topicsModesData.selectedOption.id }}')">
+              ng-options="region.title for region in regions track by region.id"
+              ng-model="selectedRegion" >
           </select>
         </label>      
       </div>    
