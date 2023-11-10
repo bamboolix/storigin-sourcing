@@ -1,8 +1,8 @@
 angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
     // toastr.info('Controlleurs initialisés avec succès', 'Storigin Consulting HR Tool', {timeOut: 5000});
-})
+}).controller('HomeCtrl', function ($scope, $http, $ionicPopup, PopupService, $http, $timeout, ngYoutubeEmbedService) {
 
-    .controller('HomeCtrl', function ($scope, $http, $ionicPopup, PopupService, $http, $timeout, ngYoutubeEmbedService) {
+        $scope.ConsultantSettings = {};
 
         $.get("https://consulting.storigin.fr/excel/", function (data) {
             $scope.opportunities = data;
@@ -15,67 +15,186 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         $scope.experiences = [];
         $scope.selectedAvailability = null;
         $scope.availabilities = [];
+        $scope.selectedProfile = null;
+        $scope.profiles = [];
 
-        $http({
-            method: 'GET',
-            url: "https://api.storigin.fr/api/regions",
-        }).then(function (response) {
-            try {
-                $scope.regions = response.data.data;
-            } catch (e) {
-                console.warn(e);
-            }
-        });
-
-        $http({
-            method: 'GET',
-            url: "https://api.storigin.fr/api/experiences",
-        }).then(function (response) {
-            try {
-                $scope.experiences = response.data.data;
-            } catch (e) {
-                console.warn(e);
-            }
-        });
-
-        $http({
-            method: 'GET',
-            url: "https://api.storigin.fr/api/availabilities",
-        }).then(function (response) {
-            try {
-                $scope.availabilities = response.data.data;
-            } catch (e) {
-                console.warn(e);
-            }
-        });
-
-        $scope.addNewRegion = function(){
-
-
-            // Use from $scope instead static
-            const title = 'STATIC TEST ' + Math.floor((Math.random() * 100) + 1) ;
-
-            let addNewRegionFormData = new FormData();
-            addNewRegionFormData.append('title', title );
-
+        $scope.getProfiles = function(){
             $http({
-                method:'POST',
-                headers: {"Content-Type": undefined },
-                url:"https://api.storigin.fr/api/regions",
-                data:addNewRegionFormData
-            }).then(function(response){
-                try{
-                    console.log( 'Adding Region response', response)
-                }catch (e){
-
+                method: 'GET',
+                url: "https://api.storigin.fr/api/profiles",
+            }).then(function (response) {
+                try {
+                    $scope.profiles = response.data.data;
+                } catch (e) {
+                    console.warn(e);
                 }
-            })
+            });
+        };
+        
+        $scope.getProfiles();
+
+        $scope.getExperiences = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/experiences",
+            }).then(function (response) {
+                try {
+                    $scope.experiences = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+
+        $scope.getExperiences();
+
+
+        $scope.getAvailabilities = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/availabilities",
+            }).then(function (response) {
+                try {
+                    $scope.availabilities = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        $scope.getAvailabilities();
+
+
+        $scope.getRegions = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/regions",
+            }).then(function (response) {
+                try {
+                    $scope.regions = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+
+        $scope.getRegions();
+
+
+        $scope.addRegion = function(){
+            if( $scope.ConsultantSettings.region == "" )
+            {
+                $scope.ConsultantSettings.region = "veuillez saisir une région";
+                console.error("empty region");
+                return;
+            }
+            else
+            {
+                let addNewRegionFormData = new FormData();
+                console.log( $scope.ConsultantSettings.region );
+                addNewRegionFormData.append( 'title', $scope.ConsultantSettings.region );
+
+                console.log( addNewRegionFormData);
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/regions",
+                    data : addNewRegionFormData
+                }).then(function(response){
+                    try{
+                        $scope.getRegions();
+                     }catch (e){
+
+                    }
+                })
+            }
         }
 
-        // CALL : addNewRegion method
-        // $scope.addNewRegion();
+        $scope.addAvailabilites = function(){
+            if( $scope.ConsultantSettings.availability == "" )
+            {
+                $scope.ConsultantSettings.availability = "veuillez saisir une disponibilité";
+                console.error("empty availability");
+                return;
+            }
+            else
+            {
+                let AvailabilityData = new FormData();
+                console.log( $scope.ConsultantSettings.availability );
+                AvailabilityData.append( 'title', $scope.ConsultantSettings.availability );
 
+                console.log( AvailabilityData );
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/availabilities",
+                    data : AvailabilityData
+                }).then(function(response){
+                    try{
+                        $scope.getAvailabilities();
+                     }catch (e){
 
+                    }
+                })
+            }
+        }
+
+        $scope.addExperiences = function(){
+            if( $scope.ConsultantSettings.experience == "" )
+            {
+                $scope.ConsultantSettings.experience = "veuillez saisir une experience";
+                console.error("empty experience");
+                return;
+            }
+            else
+            {
+                let ExperienceData = new FormData();
+                console.log( $scope.ConsultantSettings.experience );
+                ExperienceData.append( 'title', $scope.ConsultantSettings.experience );
+
+                console.log( ExperienceData );
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/experiences",
+                    data : ExperienceData
+                }).then(function(response){
+                    try{
+                        $scope.getExperiences();
+                     }catch (e){
+
+                    }
+                })
+            }
+        }
+
+        $scope.addProfiles = function(){
+            if( $scope.ConsultantSettings.profile == "" )
+            {
+                $scope.ConsultantSettings.profile = "veuillez saisir une experience";
+                console.error("empty experience");
+                return;
+            }
+            else
+            {
+                let ProfileData = new FormData();
+                console.log( $scope.ConsultantSettings.profile );
+                ProfileData.append( 'title', $scope.ConsultantSettings.profile );
+
+                console.log( ProfileData );
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/profiles",
+                    data : ProfileData
+                }).then(function(response){
+                    try{
+                        $scope.getProfiles();
+                     }catch (e){
+
+                    }
+                })
+            }
+        }
         var vm = $scope;
 
         // Return a random element from an array
