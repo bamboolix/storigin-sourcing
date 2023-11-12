@@ -112,7 +112,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             });
         };
 
-        $scope.getGrades();
+        $scope.getRegions();
 
         $scope.getGrades = function(){
             $http({
@@ -127,7 +127,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             });
         };
 
-        $scope.getRegions();
+        $scope.getGrades();
 
         $scope.addRegion = function(){
             if( $scope.ConsultantSettings.region  == undefined )
