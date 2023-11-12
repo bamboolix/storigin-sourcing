@@ -8,15 +8,20 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             $scope.opportunities = data;
         });
 
-
-        $scope.selectedRegion = null;
+        $scope.selectedRegion = { availableOptions : [], selectedOption : {} };
         $scope.regions = [];
-        $scope.selectedExperience = null;
+        $scope.selectedExperience = { availableOptions : [], selectedOption : {} };
         $scope.experiences = [];
-        $scope.selectedAvailability = null;
+        $scope.selectedAvailability = { availableOptions : [], selectedOption : {} };
         $scope.availabilities = [];
-        $scope.selectedProfile = null;
+        $scope.selectedProfile ={ availableOptions : [], selectedOption : {} };
         $scope.profiles = [];
+        $scope.selectedSpeciality = { availableOptions : [], selectedOption : {} };
+        $scope.specialities = [];
+        $scope.selectedJob = { availableOptions : [], selectedOption : {} };
+        $scope.jobs = [];
+        $scope.selectedGrade = { availableOptions : [], selectedOption : {} };
+        $scope.grades = [];
 
         $scope.getProfiles = function(){
             $http({
@@ -32,6 +37,36 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         };
         
         $scope.getProfiles();
+
+        $scope.getSpecialities = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/specialities",
+            }).then(function (response) {
+                try {
+                    $scope.specialities = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        
+        $scope.getSpecialities();
+
+        $scope.getJobs = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/jobs",
+            }).then(function (response) {
+                try {
+                    $scope.jobs = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        
+        $scope.getJobs();
 
         $scope.getExperiences = function(){
             $http({
@@ -77,13 +112,27 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             });
         };
 
+        $scope.getGrades();
+
+        $scope.getGrades = function(){
+            $http({
+                method: 'GET',
+                url: "https://api.storigin.fr/api/grades",
+            }).then(function (response) {
+                try {
+                    $scope.grades = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+
         $scope.getRegions();
 
-
         $scope.addRegion = function(){
-            if( $scope.ConsultantSettings.region == "" )
+            if( $scope.ConsultantSettings.region  == undefined )
             {
-                $scope.ConsultantSettings.region = "veuillez saisir une région";
+                toastr.error( 'Message : veuillez saisir une région' , 'Storigin Consulting', {timeOut: 5000});
                 console.error("empty region");
                 return;
             }
@@ -110,9 +159,9 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         }
 
         $scope.addAvailabilites = function(){
-            if( $scope.ConsultantSettings.availability == "" )
+            if( $scope.ConsultantSettings.availability  == undefined )
             {
-                $scope.ConsultantSettings.availability = "veuillez saisir une disponibilité";
+                toastr.error( 'Message : veuillez saisir une disponibilité' , 'Storigin Consulting', {timeOut: 5000});
                 console.error("empty availability");
                 return;
             }
@@ -139,9 +188,9 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         }
 
         $scope.addExperiences = function(){
-            if( $scope.ConsultantSettings.experience == "" )
+            if( $scope.ConsultantSettings.experience  == undefined )
             {
-                $scope.ConsultantSettings.experience = "veuillez saisir une experience";
+                toastr.error( 'Message : veuillez saisir un experience' , 'Storigin Consulting', {timeOut: 5000});
                 console.error("empty experience");
                 return;
             }
@@ -167,34 +216,143 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             }
         }
 
-        $scope.addProfiles = function(){
-            if( $scope.ConsultantSettings.profile == "" )
+
+
+        /**
+         * 
+         * Setup Profil :
+         * dependencies : Job and Speciality
+         * 
+         * Todo (only enable Profile if Job and Speciality have been defined in form)
+         * ***/
+
+        $scope.ProfileData = new FormData();
+        
+        $scope.addSpeciality = function(){
+            if( $scope.ConsultantSettings.speciality == undefined )
             {
-                $scope.ConsultantSettings.profile = "veuillez saisir une experience";
-                console.error("empty experience");
+                toastr.error( 'Message : veuillez saisir une specialité' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty speciality");
                 return;
             }
             else
             {
-                let ProfileData = new FormData();
-                console.log( $scope.ConsultantSettings.profile );
-                ProfileData.append( 'title', $scope.ConsultantSettings.profile );
+                $scope.ProfileData.append( 'title', $scope.ConsultantSettings.speciality );
 
-                console.log( ProfileData );
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/specialities",
+                    data : $scope.ProfileData
+                }).then(function(response){
+                        $scope.getSpecialities();
+                },
+                function( response ){
+                    toastr.error( 'Message : ' + response.data.message , 'Storigin Consulting', {timeOut: 5000});
+                    console.log(response);
+                }
+                )
+            }
+        }
+
+        $scope.addJob = function(){
+            if( $scope.ConsultantSettings.job == undefined )
+            {
+                toastr.error( 'Message : veuillez saisir un métier' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty job");
+                return;
+            }
+            else
+            {
+                $scope.ProfileData.append( 'title', $scope.ConsultantSettings.job );
+
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/jobs",
+                    data : $scope.ProfileData
+                }).then(function(response){
+                        $scope.getSpecialities();
+                },
+                function( response ){
+                    toastr.error( 'Message : ' + response.data.message , 'Storigin Consulting', {timeOut: 5000});
+                    console.log(response);
+                }
+                )
+            }        
+        }
+        
+
+        $scope.addProfiles = function(){            
+            if( $scope.ConsultantSettings.profile == undefined )
+            {
+                toastr.error( 'Message : veuillez saisir un profil' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty profil");
+                return;
+            }
+            else
+            {
+                $scope.ProfileData.append( 'title', $scope.ConsultantSettings.profile );
+                $scope.ProfileData.append( 'job_id', $scope.selectedJob.val.id );
+                $scope.ProfileData.append( 'speciality_id', $scope.selectedSpeciality.val.id );
+                
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
                     url:"https://api.storigin.fr/api/profiles",
-                    data : ProfileData
+                    data : $scope.ProfileData
                 }).then(function(response){
-                    try{
                         $scope.getProfiles();
-                     }catch (e){
-
-                    }
-                })
+                },
+                function( response ){
+                    toastr.error( 'Message : ' + response.data.message , 'Storigin Consulting', {timeOut: 5000});
+                    console.log(response);
+                }
+                )
             }
         }
+
+        $scope.enableProfile = function(e) {
+
+            console.log($scope.selectedJob.val.id);
+            console.log($scope.selectedJob.val.id);
+
+            if( $scope.selectedJob.val.id == undefined || $scope.selectedJob.val.id == ""  || $scope.selectedJob.val.id == null ) {
+                toastr.success( 'Message : pensez à ajouter un métier' , 'Storigin Consulting', {timeOut: 5000});   
+            }
+
+            else if( $scope.selectedSpeciality.val.id == undefined || $scope.selectedSpeciality.val.id == ""  || $scope.selectedSpeciality.val.id == null   ){
+                toastr.success( 'Message : pensez à ajouter une spécialité'  , 'Storigin Consulting', {timeOut: 5000});  
+            }
+        } 
+
+        $scope.addGrade = function(){
+            if( $scope.ConsultantSettings.grade == undefined )
+            {
+                toastr.error( 'Message : veuillez saisir un métier' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty grades");
+                return;
+            }
+            else
+            {
+                $scope.ProfileData.append( 'title', $scope.ConsultantSettings.grade );
+
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:"https://api.storigin.fr/api/grades",
+                    data : $scope.ProfileData
+                }).then(function(response){
+                        $scope.getGrades();
+                },
+                function( response ){
+                    toastr.error( 'Message : ' + response.data.message , 'Storigin Consulting', { timeOut: 5000 } );
+                    console.log( response );
+                }
+                )
+            }        
+        }
+
         var vm = $scope;
 
         // Return a random element from an array

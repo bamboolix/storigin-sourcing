@@ -27,16 +27,41 @@ input[type="file"] {
     font-size: 12px;
     border-color: rgba(0, 0, 0, 0.6);
     background-color: #32383e;
+    border: none;
+    outline: none;
+    border-bottom: 0px solid #ccc; /* You can adjust the color and thickness of the outline */
 }
+
+item-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0 48px 0 16px;
+    max-width: 65%;
+    border: none;
+    background: #32383e;
+    color: #ffffff!important;
+    text-indent: 0.01px;
+    text-overflow: '';
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    direction: rtl;
+}
+
 </style>
 <ion-view view-title="Consultant" style="border-radius:20px!important" class="pane">
   <ion-tabs class="tabs-icon-top">
 
 
-  <ion-tab title="Ajout consultants" icon-on="ion-person-add" icon-off="ion-person-add">
-    <div class="item item-divider" style="text-align:center!important">
-      <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important;"></i>
-      <h2>Ajouter un consultantsss</h2>
+  <ion-tab title="Ajouter un Consultant" icon-on="ion-person-add" icon-off="ion-person-add">
+    <div class="item item-divider" style="text-align:center!important; background-color:rgba(255, 205, 86, 1);color:#000000">
+      <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important; color:#000"></i>
+      <h2>Ajouter un consultants</h2>
     </div>
 
     <div class="row">
@@ -94,6 +119,33 @@ input[type="file"] {
       </div>
     </div>
 
+
+    <div class="row">
+
+      <div class="col">
+                  <label class="item item-input item-select">
+                    <span style="color:#ffffff">
+                      Spécialités (domaine fonctionnel)
+                    </span>
+                    <select name="speciality" id="SpecialitySelect" style="font-size:14px!important"
+                    ng-options="speciality.title for speciality in specialities track by speciality.id"
+                    ng-model="selectedSpeciality.selectedOption">
+                    </select>
+                  </label>      
+      </div>
+      <div class="col">
+                <label class="item item-input item-select">
+                  <span style="color:#ffffff">
+                    Métiers (domaine opérationnel)
+                   </span>
+                  <select name="Job" id="JobSelect" style="font-size:14px!important"
+                          ng-options="job.title for job in jobs track by job.id"
+                          ng-model="selectedJob.selectedOption" >
+                  </select>
+                </label>      
+      </div>
+    </div>
+
       <div class="row">
 
       <div class="col">
@@ -119,7 +171,6 @@ input[type="file"] {
                   </select>
                 </label>      
     </div>
-    
 
     <div class="col">
               <label class="item item-input item-select">
@@ -178,19 +229,22 @@ input[type="file"] {
   </ion-tab>
 
 
-  <ion-tab title="Paramètres" icon-on="ion-gear-b" icon-off="ion-gear-b">
-    
+  <ion-tab title="Options Configuration" icon-on="ion-gear-b" icon-off="ion-gear-b">
+    <div class="item item-divider" style="text-align:center!important; background-color:rgba(255, 205, 86, 1);color:#000000">
+      <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important; color:#000"></i>
+      <h2>Options de configuration</h2>
+    </div>
     <div class="row">
       <div class="col" style="text-align:right">
-        <span style="color:#ffffff">
+        <span  style="color:rgba(255, 205, 86, 1)">
           Region 
         </span>
       </div>
       <div class="col">
-          <input ng-model="ConsultantSettings.region" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" class="ng-pristine ng-valid ng-empty ng-touched">     
+          <input ng-model="ConsultantSettings.region" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);"  placeholder="e.g : Calvados" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
       </div>
       <div class="col">
-        <button class="button button-dark" ng-click="addRegion()">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addRegion()">
           créer
         </button>
       </div>
@@ -198,15 +252,15 @@ input[type="file"] {
 
     <div class="row">
       <div class="col" style="text-align:right">
-        <span style="color:#ffffff">
+        <span style="color:rgba(255, 205, 86, 1)">
           Disponibilité 
         </span>
       </div>
       <div class="col">
-          <input ng-model="ConsultantSettings.availability" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" class="ng-pristine ng-valid ng-empty ng-touched">     
+          <input ng-model="ConsultantSettings.availability" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);"  placeholder="e.g : 1 mois"  class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
       </div>
       <div class="col">
-        <button class="button button-dark" ng-click="addAvailabilites()">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addAvailabilites()">
           créer
         </button>
       </div>
@@ -214,15 +268,15 @@ input[type="file"] {
 
     <div class="row">
       <div class="col" style="text-align:right">
-        <span style="color:#ffffff">
+        <span  style="color:rgba(255, 205, 86, 1)">
           Experiences 
         </span>
       </div>
       <div class="col">
-          <input ng-model="ConsultantSettings.experience" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" class="ng-pristine ng-valid ng-empty ng-touched">     
+          <input ng-model="ConsultantSettings.experience" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);"  placeholder="e.g : Junior 0 à 3 ans" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
       </div>
       <div class="col">
-        <button class="button button-dark" ng-click="addExperiences()">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addExperiences()">
           créer
         </button>
       </div>
@@ -230,19 +284,109 @@ input[type="file"] {
 
     <div class="row">
       <div class="col" style="text-align:right">
-        <span style="color:#ffffff">
+        <span  style="color:rgba(255, 205, 86, 1)">
+          Specialité
+        </span>
+      </div>
+      <div class="col">
+            <input ng-model="ConsultantSettings.speciality" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Administrateur réseaux" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
+      </div>
+      <div class="col">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addSpeciality()">
+          créer
+        </button>
+      </div>
+
+      <div class="col">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Spécialités  
+          </span>
+          <select name="speciality" id="SpecialitySelect"  style="font-size:14px!important;color:#ffffff!important;"
+          ng-options="speciality.title for speciality in specialities track by speciality.id"
+          ng-model="selectedSpeciality.val"
+          ng-change="enableProfile()">
+
+          </select>
+        </label>
+       </div>
+    </div>
+
+    <div class="row">
+      <div class="col" style="text-align:right">
+        <span  style="color:rgba(255, 205, 86, 1)">
+          Job
+        </span>
+      </div>
+      <div class="col">
+            <input ng-model="ConsultantSettings.job" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Réseaux et sécurité" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
+      </div>
+      <div class="col">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addJob()">
+          créer
+        </button>
+      </div>
+      <div class="col" style="text-align:left">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Métiers
+           </span>
+          <select name="Job" id="JobSelect" style="font-size:14px!important;color:#ffffff!important;"
+                  ng-options="job.title for job in jobs track by job.id"
+                  ng-model="selectedJob.val"
+                  ng-change="enableProfile()">
+          </select>
+        </label>
+        <br/>      
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class="col" style="text-align:right">
+        <span  style="color:rgba(255, 205, 86, 1)">
           Profile
         </span>
       </div>
       <div class="col">
-          <input ng-model="ConsultantSettings.profile" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" class="ng-pristine ng-valid ng-empty ng-touched">     
+            <input ng-model="ConsultantSettings.profile" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Administrateur réseaux Télécom" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
       </div>
       <div class="col">
-        <button class="button button-dark" ng-click="addProfiles()">
+        <button class="button button-dark" style="color:#000; background-color: rgba(255, 205, 86, 1)!important"  ng-click="addProfiles()">
           créer
         </button>
       </div>
     </div>
+
+
+    <div class="row">
+      <div class="col" style="text-align:right">
+        <span  style="color:rgba(255, 205, 86, 1)">
+          Niveau
+        </span>
+      </div>
+      <div class="col">
+            <input ng-model="ConsultantSettings.grade" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Debutant, Intermédiaire, Sénior" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
+      </div>
+      <div class="col">
+        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addGrade()">
+          créer
+        </button>
+      </div>
+      <div class="col" style="text-align:left">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Niveau
+           </span>
+          <select name="Grade" id="GradeSelect" style="font-size:14px!important;color:#ffffff!important;"
+                  ng-options="grade.title for grade in grades track by grade.id"
+                  ng-model="selectedGrade.val">
+          </select>
+        </label>
+        <br/>      
+      </div>
+    </div>
+
 
   </ion-tab>
 </ion-tabs>
