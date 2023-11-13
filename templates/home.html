@@ -56,31 +56,18 @@
               </div>
               
               <div class="item item-body">
-                <div class="list">
-                  <a class="item item-icon-left" href="#">
+                <div class="list" >
+
+                  <a class="item item-icon-left" href="#"
+                     ng-repeat="consultant in selectedConsultant.availableOptions"  >
                     <i class="icon ion-person-stalker"></i>
-                      Geneviève
-                    <span class="badge badge-energized" style="background-color:rgba(255, 205, 86, 1);color:#000">10</span>
+                    {{ consultant.name }}
+                    <span class="badge badge-energized" style="background-color: rgba(255, 205, 86, 1); color: #000;">10</span>
                   </a>
                   <a class="item item-icon-left" href="#">
                     <i class="icon ion-person-stalker"></i>
                       Nadège
                     <span class="badge badge-dark">4</span>
-                  </a>
-                  <a class="item item-icon-left" href="#">
-                    <i class="icon ion-person-stalker"></i>
-                      Iria
-                    <span class="badge badge-dark">2</span>
-                  </a>
-                  <a class="item item-icon-left" href="#">
-                    <i class="icon ion-person-stalker"></i>
-                       Abelaïd
-                    <span class="badge badge-dark">1</span>
-                  </a>
-                  <a class="item item-icon-left" href="#">
-                    <i class="icon ion-person-stalker"></i>
-                       Mathieu
-                    <span class="badge badge-dark">1</span>
                   </a>
               </div>                
                 <p>

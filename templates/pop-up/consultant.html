@@ -58,7 +58,7 @@ item-select select {
   <ion-tabs class="tabs-icon-top">
 
 
-  <ion-tab title="Ajouter un Consultant" icon-on="ion-person-add" icon-off="ion-person-add">
+  <ion-tab title="Ajouter un Consultant" icon-on="ion-person-add" icon-off="ion-person-add" >
     <div class="item item-divider" style="text-align:center!important; background-color:rgba(255, 205, 86, 1);color:#000000">
       <i class="icon ion-close-circled CloseButton" ng-click="ClosePopup('consultant')" style="font-size:35px!important; color:#000"></i>
       <h2>Ajouter un consultants</h2>
@@ -120,31 +120,57 @@ item-select select {
     </div>
 
 
-    <div class="row">
+      <div class="row">
 
-      <div class="col">
+        <div class="col">
+                    <label class="item item-input item-select">
+                      <span style="color:#ffffff">
+                        Skill
+                      </span>
+                      <select name="skill_id" id="SkillSelect" style="font-size:14px!important"
+                      ng-options="skill.title for skill in selectedSkill.availableOptions track by skill.id"
+                      ng-model="selectedSkill.selectedOption">
+                      </select>
+                    </label>
+        </div>
+        <div class="col">
                   <label class="item item-input item-select">
                     <span style="color:#ffffff">
-                      Spécialités (domaine fonctionnel)
-                    </span>
-                    <select name="speciality" id="SpecialitySelect" style="font-size:14px!important"
-                    ng-options="speciality.title for speciality in specialities track by speciality.id"
-                    ng-model="selectedSpeciality.selectedOption">
+                      Grade
+                     </span>
+                    <select name="grade_id" id="GradeSelect" style="font-size:14px!important"
+                            ng-options="grade.title for grade in selectedGrade.availableOptions track by grade.id"
+                            ng-model="selectedGrade.selectedOption" >
                     </select>
-                  </label>      
+                  </label>
+        </div>
       </div>
-      <div class="col">
-                <label class="item item-input item-select">
-                  <span style="color:#ffffff">
-                    Métiers (domaine opérationnel)
-                   </span>
-                  <select name="Job" id="JobSelect" style="font-size:14px!important"
-                          ng-options="job.title for job in jobs track by job.id"
-                          ng-model="selectedJob.selectedOption" >
-                  </select>
-                </label>      
-      </div>
-    </div>
+
+<!--    <div class="row">-->
+
+<!--      <div class="col">-->
+<!--                  <label class="item item-input item-select">-->
+<!--                    <span style="color:#ffffff">-->
+<!--                      Spécialités (domaine fonctionnel)-->
+<!--                    </span>-->
+<!--                    <select name="speciality" id="SpecialitySelect" style="font-size:14px!important"-->
+<!--                    ng-options="speciality.title for speciality in specialities track by speciality.id"-->
+<!--                    ng-model="selectedSpeciality.selectedOption">-->
+<!--                    </select>-->
+<!--                  </label>      -->
+<!--      </div>-->
+<!--      <div class="col">-->
+<!--                <label class="item item-input item-select">-->
+<!--                  <span style="color:#ffffff">-->
+<!--                    Métiers (domaine opérationnel)-->
+<!--                   </span>-->
+<!--                  <select name="Job" id="JobSelect" style="font-size:14px!important"-->
+<!--                          ng-options="job.title for job in jobs track by job.id"-->
+<!--                          ng-model="selectedJob.selectedOption" >-->
+<!--                  </select>-->
+<!--                </label>      -->
+<!--      </div>-->
+<!--    </div>-->
 
       <div class="row">
 
@@ -154,7 +180,7 @@ item-select select {
                       Profil de métier du consultant
                     </span>
                     <select name="ProfilSelect" id="ProfilSelect" style="font-size:14px!important"
-                    ng-options="profile.title for profile in profiles track by profile.id"
+                    ng-options="profile.title for profile in selectedProfile.availableOptions track by profile.id"
                     ng-model="selectedProfile.selectedOption">
                     </select>
                   </label>      
@@ -165,8 +191,8 @@ item-select select {
                   <span style="color:#ffffff">
                     Expérience Professionnelle
                   </span>
-                  <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
-                          ng-options="experience.title for experience in experiences track by experience.id"
+                  <select name="Expérience" id="ExperienceSelect" style="font-size:14px!important"
+                          ng-options="experience.title for experience in selectedExperience.availableOptions  track by experience.id"
                           ng-model="selectedExperience.selectedOption" >
                   </select>
                 </label>      
@@ -178,31 +204,31 @@ item-select select {
                   Disponibilité du consultant
                 </span>
                 <select name="Disponibility" id="AvailabilitySelect" style="font-size:14px!important"
-                ng-options="availability.title for availability in availabilities track by availability.id"
-                ng-model="selectedRegion.selectedOption">
+                ng-options="availability.title for availability in selectedAvailability.availableOptions track by availability.id"
+                ng-model="selectedAvailability.selectedOption">
             </select>
               </label>      
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
-      <ion-checkbox  class="checkbox-dark" style="font-size:13x!important;" ng-model="topicsValues[ topic ]" ng-change="()">
-          Compétences dynamiques par métiers
-      </ion-checkbox>
-      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
-          Compétences dynamiques par métiers
-      </ion-checkbox>
-    </div>
-    <div class="col">
-      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
-          Compétences dynamiques par métiers
-      </ion-checkbox>
-      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">
-          Compétences dynamiques par métiers
-      </ion-checkbox>
-    </div>
-  </div>
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--      <ion-checkbox  class="checkbox-dark" style="font-size:13x!important;" ng-model="topicsValues[ topic ]" ng-change="()">-->
+<!--          Compétences dynamiques par métiers-->
+<!--      </ion-checkbox>-->
+<!--      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">-->
+<!--          Compétences dynamiques par métiers-->
+<!--      </ion-checkbox>-->
+<!--    </div>-->
+<!--    <div class="col">-->
+<!--      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">-->
+<!--          Compétences dynamiques par métiers-->
+<!--      </ion-checkbox>-->
+<!--      <ion-checkbox  class="checkbox-dark" style="font-size:13px!important;" ng-model="topicsValues[ topic ]" ng-change="()">-->
+<!--          Compétences dynamiques par métiers-->
+<!--      </ion-checkbox>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <div class="row">
       <div class="col">
@@ -210,9 +236,9 @@ item-select select {
           <span style="color:#ffffff">
             Région
           </span>
-          <select name="Expérience" id="ProfilSelect" style="font-size:14px!important"
-              ng-options="region.title for region in regions track by region.id"
-              ng-model="selectedRegion">
+          <select name="region" id="RegionSelect" style="font-size:14px!important"
+              ng-options="region.title for region in selectedRegion.availableOptions track by region.id"
+              ng-model="selectedRegion.selectedOption">
           </select>
         </label>      
       </div>    
@@ -225,6 +251,15 @@ item-select select {
       </label>             
     </div>
   </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addConsultant()">
+          créer
+        </button>
+      </div>
+
+    </div>
 
   </ion-tab>
 
@@ -289,10 +324,8 @@ item-select select {
         </span>
       </div>
       <div class="col">
-            <input ng-model="ConsultantSettings.speciality" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Administrateur réseaux" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
-      </div>
-      <div class="col">
-        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addSpeciality()">
+            <input ng-model="ConsultantSettings.speciality" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Administrateur réseaux" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">
+        <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addSpeciality()">
           créer
         </button>
       </div>
@@ -303,7 +336,7 @@ item-select select {
             Spécialités  
           </span>
           <select name="speciality" id="SpecialitySelect"  style="font-size:14px!important;color:#ffffff!important;"
-          ng-options="speciality.title for speciality in specialities track by speciality.id"
+          ng-options="speciality.title for speciality in selectedSpeciality.availableOptions track by speciality.id"
           ng-model="selectedSpeciality.val"
           ng-change="enableProfile()">
 
@@ -319,20 +352,19 @@ item-select select {
         </span>
       </div>
       <div class="col">
-            <input ng-model="ConsultantSettings.job" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Réseaux et sécurité" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
-      </div>
-      <div class="col">
-        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addJob()">
+            <input ng-model="ConsultantSettings.job" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Réseaux et sécurité" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">
+        <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addJob()">
           créer
         </button>
       </div>
+
       <div class="col" style="text-align:left">
         <label class="item item-input item-select">
           <span style="color:#ffffff">
             Métiers
            </span>
           <select name="Job" id="JobSelect" style="font-size:14px!important;color:#ffffff!important;"
-                  ng-options="job.title for job in jobs track by job.id"
+                  ng-options="job.title for job in selectedJob.availableOptions track by job.id"
                   ng-model="selectedJob.val"
                   ng-change="enableProfile()">
           </select>
@@ -366,24 +398,83 @@ item-select select {
         </span>
       </div>
       <div class="col">
-            <input ng-model="ConsultantSettings.grade" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Debutant, Intermédiaire, Sénior" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">     
+            <input ng-model="ConsultantSettings.grade" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Debutant, Intermédiaire, Sénior" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">
+          <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addGrade()">
+            créer
+          </button>
+      </div>
+
+      <div class="col" style="text-align:left">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Niveau
+           </span>
+          <select name="Grade" id="GradeSelect1" style="font-size:14px!important;color:#ffffff!important;"
+                  ng-options="grade.title for grade in selectedGrade.availableOptions track by grade.id"
+                  ng-model="selectedGrade.selectedOption">
+          </select>
+        </label>
+        <br/>      
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col" style="text-align:right">
+        <span  style="color:rgba(255, 205, 86, 1)">
+          Skill
+        </span>
       </div>
       <div class="col">
-        <button class="button button-energized" style="color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addGrade()">
+        <input ng-model="ConsultantSettings.skill.title" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Skill1, Skill2, Skill3" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">
+
+        <br>
+        <div>
+        <input type="checkbox" ng-model="ConsultantSettings.skill.isSoft" > <span style="color:rgba(255, 205, 86, 1)" >Is Soft ?</span>
+        </div>
+        <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addSkill()">
+          créer
+        </button>
+      </div>
+
+      <div class="col" style="text-align:left">
+        <label class="item item-input item-select">
+          <span style="color:#ffffff">
+            Skills
+           </span>
+          <select name="Skill" id="SkillSelect1" style="font-size:14px!important;color:#ffffff!important;"
+                  ng-options="(skill.title + ' (' + skill.type  + ' )' )  for skill in selectedSkill.availableOptions track by skill.id"
+                  ng-model="selectedSkill.selectedOption">
+          </select>
+        </label>
+        <br/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col" style="text-align:right">
+        <span  style="color:rgba(255, 205, 86, 1)">
+          Skillset
+        </span>
+      </div>
+      <div class="col">
+        <input ng-model="ConsultantSettings.skillset" style="color: rgb(255, 255, 255); background: rgb(0, 0, 0);" placeholder="e.g : Skillset1, Skillset2, Skillset3" class="ng-pristine ng-valid ng-empty ng-touched w3-input w3-border-0">
+      </div>
+      <div class="col">
+        <button class="button button-energized" style="margin-top: 1rem; color:#000; background-color: rgba(255, 205, 86, 1)!important" ng-click="addSkillSet()">
           créer
         </button>
       </div>
       <div class="col" style="text-align:left">
         <label class="item item-input item-select">
           <span style="color:#ffffff">
-            Niveau
+            Skillsets
            </span>
-          <select name="Grade" id="GradeSelect" style="font-size:14px!important;color:#ffffff!important;"
-                  ng-options="grade.title for grade in grades track by grade.id"
-                  ng-model="selectedGrade.val">
+          <select name="Grade" id="SkillsetSelect1" style="font-size:14px!important;color:#ffffff!important;"
+                  ng-options="ss.title for ss in selectedSkillSet.availableOptions track by ss.id"
+                  ng-model="selectedSkill.selectedOption">
           </select>
         </label>
-        <br/>      
+        <br/>
       </div>
     </div>
 

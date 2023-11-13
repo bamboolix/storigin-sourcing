@@ -4,32 +4,33 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
 
         $scope.ConsultantSettings = {};
 
+        // const API_BASE_URL =  "https://api.storigin.fr/api";
+        const API_BASE_URL =  "http://127.0.0.1:8000/api";
+
         $.get("https://consulting.storigin.fr/excel/", function (data) {
             $scope.opportunities = data;
         });
 
         $scope.selectedRegion = { availableOptions : [], selectedOption : {} };
-        $scope.regions = [];
         $scope.selectedExperience = { availableOptions : [], selectedOption : {} };
-        $scope.experiences = [];
         $scope.selectedAvailability = { availableOptions : [], selectedOption : {} };
-        $scope.availabilities = [];
         $scope.selectedProfile ={ availableOptions : [], selectedOption : {} };
-        $scope.profiles = [];
         $scope.selectedSpeciality = { availableOptions : [], selectedOption : {} };
-        $scope.specialities = [];
         $scope.selectedJob = { availableOptions : [], selectedOption : {} };
-        $scope.jobs = [];
+
         $scope.selectedGrade = { availableOptions : [], selectedOption : {} };
-        $scope.grades = [];
+        $scope.selectedSkill = { availableOptions : [], selectedOption : {} };
+        $scope.selectedSkillSet = { availableOptions : [], selectedOption : {} };
+
+        $scope.selectedConsultant ={ availableOptions : [], selectedOption : {} };
 
         $scope.getProfiles = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/profiles",
+                url: API_BASE_URL +"/profiles",
             }).then(function (response) {
                 try {
-                    $scope.profiles = response.data.data;
+                    $scope.selectedProfile.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
@@ -41,10 +42,10 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         $scope.getSpecialities = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/specialities",
+                url: API_BASE_URL +"/specialities",
             }).then(function (response) {
                 try {
-                    $scope.specialities = response.data.data;
+                    $scope.selectedSpeciality.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
@@ -56,10 +57,10 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         $scope.getJobs = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/jobs",
+                url: API_BASE_URL +"/jobs",
             }).then(function (response) {
                 try {
-                    $scope.jobs = response.data.data;
+                    $scope.selectedJob.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
@@ -71,26 +72,25 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         $scope.getExperiences = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/experiences",
+                url: API_BASE_URL +"/experiences",
             }).then(function (response) {
                 try {
-                    $scope.experiences = response.data.data;
+                    $scope.selectedExperience.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
             });
         };
-
         $scope.getExperiences();
 
 
         $scope.getAvailabilities = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/availabilities",
+                url: API_BASE_URL +"/availabilities",
             }).then(function (response) {
                 try {
-                    $scope.availabilities = response.data.data;
+                    $scope.selectedAvailability.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
@@ -102,32 +102,76 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
         $scope.getRegions = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/regions",
+                url: API_BASE_URL +"/regions",
             }).then(function (response) {
                 try {
-                    $scope.regions = response.data.data;
+                    $scope.selectedRegion.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
             });
         };
-
         $scope.getRegions();
 
         $scope.getGrades = function(){
             $http({
                 method: 'GET',
-                url: "https://api.storigin.fr/api/grades",
+                url: API_BASE_URL +"/grades",
             }).then(function (response) {
                 try {
-                    $scope.grades = response.data.data;
+                    $scope.selectedGrade.availableOptions = response.data.data;
                 } catch (e) {
                     console.warn(e);
                 }
             });
         };
-
         $scope.getGrades();
+
+        $scope.getSkills = function(){
+            $http({
+                method: 'GET',
+                url: API_BASE_URL +"/skills",
+            }).then(function (response) {
+                try {
+                    $scope.selectedSkill.availableOptions = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        $scope.getSkills();
+
+        $scope.getSkillSets = function(){
+            $http({
+                method: 'GET',
+                url: API_BASE_URL +"/skillsets",
+            }).then(function (response) {
+                try {
+                    $scope.selectedSkillSet.availableOptions = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        $scope.getSkillSets();
+
+        $scope.consultant = {};
+
+
+        $scope.getConsultants = function(){
+            $http({
+                method: 'GET',
+                url: API_BASE_URL +"/consultants",
+            }).then(function (response) {
+                try {
+                    $scope.selectedConsultant.availableOptions = response.data.data;
+                } catch (e) {
+                    console.warn(e);
+                }
+            });
+        };
+        $scope.getConsultants();
+
 
         $scope.addRegion = function(){
             if( $scope.ConsultantSettings.region  == undefined )
@@ -146,7 +190,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/regions",
+                    url:API_BASE_URL +"/regions",
                     data : addNewRegionFormData
                 }).then(function(response){
                     try{
@@ -175,7 +219,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/availabilities",
+                    url:API_BASE_URL +"/availabilities",
                     data : AvailabilityData
                 }).then(function(response){
                     try{
@@ -204,7 +248,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/experiences",
+                    url:API_BASE_URL +"/experiences",
                     data : ExperienceData
                 }).then(function(response){
                     try{
@@ -216,9 +260,93 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
             }
         }
 
+        $scope.addSkill = function(){
+            if( $scope.ConsultantSettings.skill  == undefined )
+            {
+                toastr.error( 'Message : Select Skill' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty skill");
+                return;
+            }
+            else
+            {
+                let SkillData = new FormData();
+                console.log( $scope.ConsultantSettings.skill );
+                SkillData.append( 'title', $scope.ConsultantSettings.skill.title );
+
+                var skillType = '';
+                if($scope.ConsultantSettings.skill.isSoft === true){
+                    skillType='Soft';
+                }else{
+                    skillType='Core';
+                }
+
+                SkillData.append( 'type', skillType );
+
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:API_BASE_URL +"/skills",
+                    data : SkillData
+                }).then(function(response){
+                    try{
+                        $scope.getSkills();
+                    }catch (e){
+
+                    }
+                })
+            }
+        }
+
+        $scope.addSkillSet = function(){
+            console.log( "Selected Skill", $scope.selectedSkill)
+        if( $scope.selectedSkill.selectedOption.id  == undefined )
+        {
+            toastr.error( 'Message : Select Skill' , 'Storigin Consulting', {timeOut: 5000});
+            console.error("empty skill");
+            return;
+        }
+        else if( $scope.selectedGrade.selectedOption.id  == undefined )
+        {
+            console.log( "Selected Grade", $scope.selectedGrade)
+            toastr.error( 'Message : Select Grade' , 'Storigin Consulting', {timeOut: 5000});
+            console.error("empty grade");
+            return;
+        }
+        else if($scope.ConsultantSettings.skillset == undefined){
+            console.log( "Enter Skillset Title")
+            toastr.error( 'Message : Enter Skillset Title' , 'Storigin Consulting', {timeOut: 5000});
+            console.error("empty Skillset Title");
+            return;
+        }
+        else
+        {
+            let SkillSetData = new FormData();
+
+            SkillSetData.append( 'title', $scope.ConsultantSettings.skillset );
+
+            SkillSetData.append( 'skill_id', $scope.selectedSkill.selectedOption.id );
+            SkillSetData.append( 'grade_id', $scope.selectedGrade.selectedOption.id );
+
+            $http({
+                method:'POST',
+                headers: { "Content-Type" : undefined },
+                url:API_BASE_URL +"/skillsets",
+                data : SkillSetData
+            }).then(function(response){
+                try{
+                    $scope.getSkillSets();
+                }catch (e){
+
+                }
+            })
+        }
+    }
 
 
-        /**
+
+
+
+    /**
          * 
          * Setup Profil :
          * dependencies : Job and Speciality
@@ -242,7 +370,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/specialities",
+                    url:API_BASE_URL +"/specialities",
                     data : $scope.ProfileData
                 }).then(function(response){
                         $scope.getSpecialities();
@@ -269,10 +397,10 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/jobs",
+                    url:API_BASE_URL +"/jobs",
                     data : $scope.ProfileData
                 }).then(function(response){
-                        $scope.getSpecialities();
+                        $scope.getJobs();
                 },
                 function( response ){
                     toastr.error( 'Message : ' + response.data.message , 'Storigin Consulting', {timeOut: 5000});
@@ -299,7 +427,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/profiles",
+                    url:API_BASE_URL +"/profiles",
                     data : $scope.ProfileData
                 }).then(function(response){
                         $scope.getProfiles();
@@ -340,7 +468,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 $http({
                     method:'POST',
                     headers: { "Content-Type" : undefined },
-                    url:"https://api.storigin.fr/api/grades",
+                    url:API_BASE_URL +"/grades",
                     data : $scope.ProfileData
                 }).then(function(response){
                         $scope.getGrades();
@@ -350,7 +478,123 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                     console.log( response );
                 }
                 )
-            }        
+            }
+        }
+
+        /**
+         *
+         * Setup Consultant
+         */
+
+
+
+        $scope.addConsultant = function(){
+            let ConsultantData = {};
+            ConsultantData.name = $scope.consultant.nom;
+            ConsultantData.prename = $scope.consultant.prenom;
+            ConsultantData.telephone = $scope.consultant.telephone;
+            ConsultantData.address = $scope.consultant.adress;
+            ConsultantData.salaire = $scope.consultant.salaire;
+            ConsultantData.email = $scope.consultant.email;
+
+            ConsultantData.skill_id = $scope.selectedSkill.selectedOption.id;
+            ConsultantData.grade_id = $scope.selectedGrade.selectedOption.id;
+
+            ConsultantData.region_id = $scope.selectedRegion.selectedOption.id;
+            ConsultantData.profile_id = $scope.selectedProfile.selectedOption.id;
+
+            ConsultantData.experience_id = $scope.selectedExperience.selectedOption.id;
+            ConsultantData.availability_id = $scope.selectedAvailability.selectedOption.id;
+
+
+            if( ConsultantData.name  == undefined )
+            {
+                toastr.error( 'Message : Enter Name' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty name");
+                return;
+            }else if( ConsultantData.prename  == undefined )
+            {
+                toastr.error( 'Message : Enter prename' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty prename");
+                return;
+            }
+            else if( ConsultantData.telephone  == undefined )
+            {
+                toastr.error( 'Message : Enter telephone' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty telephone");
+                return;
+            }else if( ConsultantData.address  == undefined )
+            {
+                toastr.error( 'Message : Enter address' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty address");
+                return;
+            }
+            else if( ConsultantData.salaire  == undefined )
+            {
+                toastr.error( 'Message : Enter salaire' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty salaire");
+                return;
+            }
+            else if( ConsultantData.skill_id  == undefined )
+            {
+                toastr.error( 'Message : Select Skill' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty skill");
+                return;
+            }
+            else if( ConsultantData.grade_id  == undefined )
+            {
+                toastr.error( 'Message : Select Grade' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty grade");
+                return;
+            }
+            else if( ConsultantData.region_id  == undefined )
+            {
+                toastr.error( 'Message : Select Region' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty region");
+                return;
+            }
+            else if( ConsultantData.profile_id  == undefined )
+            {
+                toastr.error( 'Message : Select Profile' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty profile");
+                return;
+            }
+            else if( ConsultantData.experience_id  == undefined )
+            {
+                toastr.error( 'Message : Select Experience' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty experience");
+                return;
+            }
+            else if( ConsultantData.availability_id  == undefined )
+            {
+                toastr.error( 'Message : Select availability' , 'Storigin Consulting', {timeOut: 5000});
+                console.error("empty availability");
+                return;
+            }
+            else
+            {
+                var ConsultantFormData = new FormData();
+
+                ConsultantFormData.append('test',1234);
+
+                Object.entries(ConsultantData).forEach(([key, value]) => {
+                    console.log(key, value)
+                    ConsultantFormData.append(key, value);
+                });
+
+                $http({
+                    method:'POST',
+                    headers: { "Content-Type" : undefined },
+                    url:API_BASE_URL +"/consultants",
+                    data : ConsultantFormData
+                }).then(function(response){
+                    try{
+                        $scope.getConsultants();
+                    }catch (e){
+
+                    }
+                })
+            }
         }
 
         var vm = $scope;
