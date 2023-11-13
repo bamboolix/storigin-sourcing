@@ -576,6 +576,7 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
                 var ConsultantFormData = new FormData();
 
                 ConsultantFormData.append('test',1234);
+                ConsultantFormData.append('password','password');
 
                 Object.entries(ConsultantData).forEach(([key, value]) => {
                     console.log(key, value)
