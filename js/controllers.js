@@ -4,8 +4,8 @@ angular.module('engineering-toolbox-bytel.controllers', ['ksSwiper', 'ngRows']).
 
         $scope.ConsultantSettings = {};
 
-        // const API_BASE_URL =  "https://api.storigin.fr/api";
-        const API_BASE_URL =  "http://127.0.0.1:8000/api";
+        const API_BASE_URL =  "https://api.storigin.fr/api";
+        // const API_BASE_URL =  "http://127.0.0.1:8000/api";
 
         $.get("https://consulting.storigin.fr/excel/", function (data) {
             $scope.opportunities = data;
